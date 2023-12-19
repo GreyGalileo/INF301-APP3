@@ -7,19 +7,36 @@
 /* fichier à compléter au besoin */
 
 void init_liste_vide(liste_t* L) {
-   printf ("<<<<< À faire: fonction init_liste_vide fichier " __FILE__ "\n >>>>>");
-    /* a completer */
+   if(L == NULL){
+    L = (liste_t *) malloc(sizeof(liste_t));
+    L->tete = NULL;
+   } else {
+    printf("Pointer to uninitialised linked list is not a null pointer\n");
+   }
 }
 
 void liberer_liste(liste_t* L) {
-   printf ("<<<<< À faire: fonction liberer_liste fichier " __FILE__ "\n >>>>>");
-    /* a completer */
+    if(L == NULL){return;}
+   cellule_t *next = NULL;
+   for (cellule_t *curr = L->tete; curr != NULL;){
+    next = curr->suivant;
+    free(curr->val);
+    free(curr);
+    curr = next;
+   }
+   //free(L);
+   L->tete = NULL;
 }
 
 
 int ajouter_tete(liste_t* L, string c) { /* retourne 0 si OK, 1 sinon  */
-   printf ("<<<<< À faire: fonction ajouter_tete fichier " __FILE__ " >>>>>\n");
-    /* a completer */
-        return 1;
+    if(L == NULL){ return 1; }
+    cellule_t *newcell = (cellule_t *) malloc(sizeof(cellule_t));
+    if (newcell == NULL){ return 1; }
+    string new_str = strdup(c);
+    newcell->val = new_str;
+    newcell->suivant = L->tete;
+    L->tete = newcell;
+    return 0;
 }
 

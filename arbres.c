@@ -92,6 +92,14 @@ arbre lire_arbre (FILE *f)
 }
 
 
+arbre clone_arbre(arbre a){
+    arbre resultat = nouveau_noeud();
+    resultat->valeur = strdup(a->valeur);
+    resultat->gauche = a->gauche;
+    resultat->droit = a->droit;
+    return resultat;
+}
+
 
 void affiche_arbre (noeud *racine)
 {

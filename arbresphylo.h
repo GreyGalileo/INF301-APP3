@@ -16,6 +16,7 @@ void analyse_arbre (arbre racine, int* nb_esp, int* nb_carac);
  */
 int rechercher_espece (arbre racine, char *espece, liste_t* seq);
 
+void dot_format_conversion(arbre, FILE*);
 
 int ajouter_espece (arbre* racine, char *espece, cellule_t* seq);
 
